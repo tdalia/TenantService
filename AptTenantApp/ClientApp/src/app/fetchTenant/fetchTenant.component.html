@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+  <h1>Tenant Data</h1>
+
+  <p>This component demonstrates fetching Employee data from the server.</p>
+
+  <p *ngIf="!tenantList"><em>Loading...</em></p>
+
+  <p>
+    <a [routerLink]="['/register-tenant']">Create New</a>
+  </p>
+
+  <table class='table' *ngIf="tenantList">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Building No</th>
+        <th>Apartment No</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let tent of tenantList">
+        <td>{{ tent.id }}</td>
+        <td>{{ tent.name }}</td>
+        <td>{{ tent.gender }}</td>
+        <td>{{ tent.buildingNo }}</td>
+        <td>{{ tent.aptNo }}</td>
+        <td>
+          <a [routerLink]="['/tenant/edit/', tent.id]">Edit</a>
+          <a [routerLink]="" (click)="delete(tent.id)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
